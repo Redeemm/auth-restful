@@ -9,31 +9,30 @@ import java.util.List;
 @Configuration
 public class CustomerConfig {
 
-//    @Bean
-//    CommandLineRunner commandLineRunner(CustomerRepo CustomerRepo) {
-//        return args -> {
-//            Customer Red = new Customer(
-//                    "redeemerdela@gmail.com",
-//                    "RedMan"
-//            );
-//
-//
-//
-//            Customer Todd = new Customer(
-//                    "Toddmanu@gmail.com",
-//                    "GodTodd"
-//            );
-//
-//
-//
-//            CustomerRepo.saveAll(
-//                    List.of(
-//                            Red, Todd
-//                    )
-//            );
-//
-//
-//
-//        };
-//    }
+    @Bean
+    CommandLineRunner commandLineRunner(CustomerRepo CustomerRepo) {
+        return args -> {
+            Customer Red = new Customer(
+                    1,
+                    "Red",
+                    "RedMan",
+                    "redf@gmail.com",
+                    12345,
+                    "2343"
+
+            );
+
+
+
+
+            CustomerRepo.saveAll(
+                    List.of(
+                            Red
+                    )
+            );
+
+
+
+        };
+    }
 }
