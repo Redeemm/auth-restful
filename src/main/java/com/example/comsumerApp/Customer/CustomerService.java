@@ -17,18 +17,26 @@ public class CustomerService {
         this.CustomerRepo = customerRepo;
     }
 
-
+    //Get Customer from DB
     public List<Customer> getCustomer() {
         return CustomerRepo.findAll();
     }
 
-    public void addNewCustomer(Customer Customer) {
 
-       Optional<Customer> customerOptional =  CustomerRepo.findByFirstNameOrLastName(Customer.getFirstName(),Customer.getLastName());
-       if (customerOptional.isPresent()) {
-           throw new IllegalStateException("name not found");
-       }
-       CustomerRepo.save(Customer);
+//    Add new customer to DB
+//    public void addNewCustomer(Customer customer) {
+//        Optional<Customer> optionalCustomer = CustomerRepo.findByFirstNameOrLastName(customer.getFirstName(), customer.getLastName());
+//        if (optionalCustomer.isPresent()) {
+//            throw new IllegalStateException("name is available");
+//        }
+//        CustomerRepo.save(customer);
+//    }
 
+    public void deleteCustomer(Long customerID) {
+        boolean exist = CustomerRepo.existsById(customerID);
+        if (!exist) {
+            throw new IllegalStateException("Dont exist");
+        }
+        CustomerRepo.deleteById(customerID);
     }
 }
