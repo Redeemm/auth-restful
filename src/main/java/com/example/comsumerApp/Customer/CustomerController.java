@@ -33,16 +33,18 @@ public class CustomerController {
 
     @DeleteMapping("api/v1/customer/{id}")
     public void deleteCustomer( @PathVariable(value = "id") Long CustomerID) {
-//            throws ResourceNotFoundException {
-//        Customer customer = customerRepo.findById(CustomerID)
-//                .orElseThrow(() -> new ResourceNotFoundException("Customer not found for this id :: " + CustomerID));
-//
-//        customerRepo.delete(customer);
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("deleted", Boolean.TRUE);
-//        return response;
-
         CustomerService.deleteCustomer(CustomerID);
+    }
 
+    @PutMapping(path = "{CustomerID}")
+    public void updateCustomer(
+            @PathVariable("CustomerID") Long CustomerID,
+            @RequestParam(required = false) String FirstName,
+            @RequestParam(required = false) String LastName,
+            @RequestParam(required = false) String Email,
+            @RequestParam(required = false) int Phone,
+            @RequestParam(required = false) String Address
+            ) {
+        CustomerService.updateCustomer(CustomerID, FirstName, LastName, Email, Phone, Address);
     }
 }
