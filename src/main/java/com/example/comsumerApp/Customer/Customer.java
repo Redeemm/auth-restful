@@ -1,7 +1,15 @@
 package com.example.comsumerApp.Customer;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 
 @Entity (name = "Customer")
 @Table (
@@ -13,7 +21,6 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-
     @SequenceGenerator(
             name = "sequence_name",
             sequenceName = "sequence_name",
@@ -25,57 +32,22 @@ public class Customer {
             generator = "sequence_name"
     )
 
-    private Long CustomerID;
+    private long CustomerID;
+
+    @Column (name = "first_name")
+    private String FirstName;
+
+    @Column (name = "last_name")
+    private String LastName;
+
+    @Column (name = "email")
     private String Email;
-    private String Password;
+
+    @Column (name = "phone_number")
+    private int Phone;
+
+    @Column (name = "address")
+    private String Address;
 
 
-    public Customer(Long customerID, String email, String password) {
-        CustomerID = customerID;
-        Email = email;
-        Password = password;
-    }
-
-    public Customer() {
-
-    }
-
-
-    public Customer(String email, String password) {
-        Email = email;
-        Password = password;
-    }
-
-    public Long getCustomerID() {
-        return CustomerID;
-    }
-
-    public void setCustomerID(Long customerID) {
-        CustomerID = customerID;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "CustomerID=" + CustomerID +
-                ", Email='" + Email + '\'' +
-                ", Password='" + Password + '\'' +
-                '}';
-    }
 }

@@ -22,6 +22,7 @@ public class CustomerService {
         return CustomerRepo.findAll();
     }
 
+
 //    public void addNewCustomer(Customer Customer) {
 //        Optional<Customer> optionalCustomer = CustomerRepo.findCustomerByEmail(Customer.getEmail());
 //        if (optionalCustomer.isPresent()) {
