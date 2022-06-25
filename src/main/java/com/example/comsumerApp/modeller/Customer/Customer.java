@@ -1,4 +1,4 @@
-package com.example.comsumerApp.Customer;
+package com.example.comsumerApp.modeller.Customer;
 
 import lombok.*;
 
