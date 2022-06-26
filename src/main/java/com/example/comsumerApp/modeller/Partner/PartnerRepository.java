@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PartnerRepository extends JpaRepository<Partner, Long> {
 
-    @Query("SELECT s FROM Student s WHERE s.partnerName = ?1")
-    Optional<Partner> findStudentByEmail(String firstName);
+    @Query("SELECT s FROM Partner s WHERE s.partnerName = ?1")
+    Optional<Partner> findPartnerByPartnerName(String partnerName);
 
 }

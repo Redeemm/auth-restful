@@ -1,6 +1,5 @@
 package com.example.comsumerApp.modeller.Product;
 
-import com.example.comsumerApp.modeller.Partner.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +16,25 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getProduct() {
+    public List<Product> getPartner(){
         return productRepository.findAll();
     }
 
-    public void addNewProduct(Product product) {
-        Optional<Product> productOptional = productRepository.findByProductID(product.getProductID());
-        if (productOptional.isPresent()){
-            throw new IllegalStateException("name exist!");
+
+    public void addNewPartner(Product product) {
+
+        Optional<Product> optionalStudent = productRepository.findPartnerByPartnerName(product.getProductName());
+        if (optionalStudent.isPresent()){
+            throw new IllegalStateException("partner name exist!");
         }
         productRepository.save(product);
     }
 
-    public void  deleteProduct(Long productID) {
-        productRepository.deleteById(productID);
+    public void deleteProduct(Long ProductID) {
+        boolean exist = productRepository.existsById(ProductID);
+        if (!exist) {
+            throw new IllegalStateException("Student ID " + ProductID + " does not exist");
+        }
+        productRepository.deleteById(ProductID);
     }
 }

@@ -15,7 +15,7 @@ public class PartnerController {
         this.partnerService = partnerService;
     }
 
-    @GetMapping
+    @GetMapping("")
     public List<Partner> getPartner() {
         return partnerService.getPartner();
     }

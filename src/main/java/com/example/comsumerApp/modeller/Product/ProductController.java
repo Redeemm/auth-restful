@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/products")
+@RequestMapping(path = "api/products")
 public class ProductController {
-
     private final ProductService productService;
 
     @Autowired
@@ -16,18 +15,19 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping()
-    public List<Product> getProduct () {
-        return productService.getProduct();
+    @GetMapping("")
+    public List<Product> getPartner() {
+        return productService.getPartner();
     }
 
-    @PostMapping()
-    public void registerNewProduct (@RequestBody Product product) {
-        productService.addNewProduct(product);
+    @PostMapping("create")
+    public void registerNewPartner(@RequestBody Product product) {
+        productService.addNewPartner(product);
     }
 
-    @DeleteMapping(path = "id")
-    public void deleteProduct(@PathVariable("id") Long productID) {
-        productService.deleteProduct(productID);
+    @DeleteMapping(path = "delete/{Id}")
+    public void deletePartner(@PathVariable("Id") Long partnerID) {
+        productService.deleteProduct(partnerID);
     }
+
 }

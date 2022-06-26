@@ -23,9 +23,9 @@ public class PartnerService {
 
     public void addNewPartner(Partner partner) {
 
-        Optional<Partner> optionalStudent = partnerRepository.findStudentByEmail(partner.getPartnerName());
+        Optional<Partner> optionalStudent = partnerRepository.findPartnerByPartnerName(partner.getPartnerName());
         if (optionalStudent.isPresent()){
-            throw new IllegalStateException("email exist!");
+            throw new IllegalStateException("partner name exist!");
         }
         partnerRepository.save(partner);
     }

@@ -1,51 +1,52 @@
 package com.example.comsumerApp.modeller.Product;
 
-import com.example.comsumerApp.modeller.user.User;
-import lombok.*;
+
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+
+@Entity
+@Table(
+        name = "product"
+)
 
 @Getter
 @Setter
 @ToString
-
-@Entity (name = "Product")
-@Table (name = "product")
 public class Product {
-
     @Id
 
     @SequenceGenerator(
-            name = "sequence_name",
-            sequenceName = "sequence_name",
+            name = "product_sequence_name",
+            sequenceName = "product_sequence_name",
             allocationSize = 1
     )
 
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "sequence_name"
+            generator = "product_sequence_name"
     )
 
+    private long productID;
+    private String productName;
+    private String partner;
+    private String commercial;
 
-    private Long ProductID;
-    private String ProductName;
-    private String Partner;
-    private String Commercials;
+    public Product() {}
 
-    public Product(String productName, String partner, String commercials) {
-        ProductName = productName;
-        Partner = partner;
-        Commercials = commercials;
+    public Product(long productID, String productName, String partner, String commercial) {
+        this.productID = productID;
+        this.productName = productName;
+        this.partner = partner;
+        this.commercial = commercial;
     }
 
-    public Product(Long productID, String productName, String partner, String commercials) {
-        ProductID = productID;
-        ProductName = productName;
-        Partner = partner;
-        Commercials = commercials;
+    public Product(String productName, String partner, String commercial) {
+        this.productName = productName;
+        this.partner = partner;
+        this.commercial = commercial;
     }
-
-    public Product() {
-    }
-
 }
