@@ -33,7 +33,7 @@ public class ProductService {
     public void deleteProduct(Long ProductID) {
         boolean exist = productRepository.existsById(ProductID);
         if (!exist) {
-            throw new IllegalStateException("Student ID " + ProductID + " does not exist");
+            throw new IllegalStateException("Product ID " + ProductID + " does not exist");
         }
         productRepository.deleteById(ProductID);
     }
